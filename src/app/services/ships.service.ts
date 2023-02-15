@@ -5,14 +5,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ShipsService {
-  starshipsList = [];
   constructor( private http: HttpClient ) { }
 
   getShips(){
-    return this.http.get('https://swapi.dev/api/starships/')
-    .subscribe((resp : any)=> {
-      console.log(resp.data);
-      this.starshipsList = resp.data;
-    })
+    return this.http.get('https://swapi.dev/api/starships/').toPromise();
   }
 }

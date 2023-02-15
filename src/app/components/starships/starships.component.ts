@@ -8,9 +8,11 @@ import { ShipsService } from 'src/app/services/ships.service';
 })
 export class StarshipsComponent implements OnInit {
   ngOnInit(): void {
-    this.shipService.getShips();
-    this.starshipsList= this.shipService.starshipsList;
-    console.log(this.starshipsList);
+    this.shipService.getShips()
+    .then((resp:any) => {
+      console.log(resp.results);
+      this.starshipsList= resp.results;
+    });
   }
   starshipsList: any []=[];
   constructor( private shipService : ShipsService){}
