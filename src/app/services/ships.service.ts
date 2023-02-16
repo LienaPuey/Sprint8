@@ -12,7 +12,7 @@ export class ShipsService {
   getShips(){
     return this.http.get('https://swapi.dev/api/starships/').toPromise();
   }
-
+// https://starpi.herokuapp.com/
   getDetail(){
     this.starshipId = this.route.snapshot.queryParamMap.get('id') ?? '';
   
