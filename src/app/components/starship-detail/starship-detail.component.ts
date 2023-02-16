@@ -1,3 +1,4 @@
+import { ShipsService } from 'src/app/services/ships.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -26,23 +27,13 @@ class: string;
 })
 export class StarshipDetailComponent implements OnInit{
   starshipId: string = '';
-  starshipDetail: StarshipDetail={
-    name: '',
-    model: '',
-    manufacturer: '',
-    cost: '',
-    length: 0,
-    maxSpeed: 0,
-    crew: '',
-    passengers: 0,
-    capacity: 0,
-    consumables: '',
-    rating: '',
-    mglt: 0,
-    class: ''
-  };
-  constructor(private route: ActivatedRoute, private http: HttpClient){}
+  starshipDetail!: StarshipDetail;
+  constructor(private route: ActivatedRoute, private http: HttpClient, private shipService: ShipsService){}
 ngOnInit(): void {
+  // this.shipService.getDetail()
+  // .then((resp:any) => {
+  //   console.log
+  // })
     this.starshipId = this.route.snapshot.queryParamMap.get('id') ?? '';
   
   console.log(this.starshipId, 'id');
