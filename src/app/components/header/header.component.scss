@@ -1,3 +1,16 @@
 .starwarsLogo{
     max-width: 10%;
 }
+.navPanel {
+    border-bottom: 1px solid rgb(85, 85, 85);
+    border-top:1px solid  rgb(85, 85, 85);
+}
+a, :hover, :focus, :active{
+        color:white;
+}
+
+.nav-item {
+    border-left: 1px solid  rgb(85, 85, 85);
+    border-right: 1px solid  rgb(85, 85, 85);
+}
+

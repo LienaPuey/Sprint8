@@ -1,12 +1,10 @@
-
-<p></p>
-<p>Fabricante: {{ starshipDetail.manufacturer }}</p>
-<div class="container">
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">{{ starshipDetail.name }}</h5>
-          <h6 class="card-subtitle mb-2">Model: {{ starshipDetail.model }}</h6>
-          <h6 class="card-subtitle mb-2">Starship Class: {{ starshipDetail.cost }}</h6>
-        </div>
-      </div>
+<div  *ngIf="starshipDetail" class="container" >
+  <div class="card" style="width: 18rem;">
+    <img src="" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{ starshipDetail.name }}</h5>
+      <h6 class="card-subtitle mb-2">Model: {{ starshipDetail.model }}</h6>
+      <h6 class="card-subtitle mb-2">Starship Class: {{ starshipDetail.starship_class }}</h6>
+    </div>
+  </div>
 </div>
