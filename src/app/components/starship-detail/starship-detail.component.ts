@@ -8,16 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./starship-detail.component.scss']
 })
 export class StarshipDetailComponent implements OnInit{
-  starshipId: string = '';
   starshipDetail: any;
+  id:number = 0;
   constructor(private shipService: ShipsService){}
-ngOnInit(): void {
-  this.shipService.getDetail()
-  .then((resp:any)=>{
-    console.log(resp, 'resultado');
+
+  ngOnInit(): void {
+  this.shipService.getDetail(this.id).subscribe(resp => {
     this.starshipDetail = resp;
   });
 
-
 }
+
 }

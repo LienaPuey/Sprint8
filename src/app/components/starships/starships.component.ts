@@ -9,7 +9,7 @@ import { ShipsService } from 'src/app/services/ships.service';
 export class StarshipsComponent implements OnInit {
   ngOnInit(): void {
     this.shipService.getShips()
-    .then((resp:any) => {
+    .subscribe((resp:any) => {
       console.log(resp.results);
       this.starshipsList= resp.results;
     });

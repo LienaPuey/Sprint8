@@ -12,7 +12,7 @@ import { HeaderComponent } from './components/header/header.component';
 const routes: Routes = [
   {path: 'home', component:HomeComponent},
   {path: 'starships', component: StarshipsComponent},
-  {path: 'starshipsdetail', component: StarshipDetailComponent}
+  {path: 'starshipsdetail/:id', component: StarshipDetailComponent}
 ]
 @NgModule({
   declarations: [

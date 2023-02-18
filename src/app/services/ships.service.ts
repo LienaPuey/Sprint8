@@ -1,6 +1,8 @@
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
 
 
 @Injectable({
@@ -9,16 +11,16 @@ import { Injectable } from '@angular/core';
 export class ShipsService {
   starshipId: string = '';
   constructor( private http: HttpClient, private route: ActivatedRoute ) { 
-    this.starshipId = this.route.snapshot.queryParamMap.get('id') ?? '';
+
   }
 
-  getShips(): Promise<Object | undefined>{
-    return this.http.get('https://starpi.herokuapp.com/starpi/starships/').toPromise();
+  getShips(): Observable<Object>{
+    return this.http.get('https://starpi.herokuapp.com/starpi/starships/');
   }
 
-  getDetail(): Promise<Object | undefined>{
+  getDetail(id:number):Observable<Object>{
 
-    return this.http.get(this.starshipId).toPromise();
+    return this.http.get(`https://starpi.herokuapp.com/starpi/starships/${id}`)
   }
 
 
