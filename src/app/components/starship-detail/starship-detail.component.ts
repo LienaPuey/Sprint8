@@ -1,5 +1,6 @@
-import { ShipsService } from 'src/app/services/ships.service';
+import { ShipsService, StarshipDetail } from 'src/app/services/ships.service';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -8,15 +9,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./starship-detail.component.scss']
 })
 export class StarshipDetailComponent implements OnInit{
-  starshipDetail: any;
-  id:number = 0;
-  constructor(private shipService: ShipsService){}
+  starshipDetail: StarshipDetail | undefined;
+  id:string='';
+  constructor(private shipService: ShipsService, private root: ActivatedRoute){}
 
   ngOnInit(): void {
-  this.shipService.getDetail(this.id).subscribe(resp => {
-    this.starshipDetail = resp;
-  });
+    this.root.paramMap.subscribe(params => {
+      this.id = params.get('id')!;
+      this.shipService.getDetail(this.id).subscribe(resp => {
+        if(resp.results.length >0 ){
+          this.starshipDetail = resp.results[0];
+        }
+      });
+    })
+    
 
-}
+  }
 
 }
