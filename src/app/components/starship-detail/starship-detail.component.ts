@@ -17,8 +17,10 @@ export class StarshipDetailComponent implements OnInit{
     this.root.paramMap.subscribe(params => {
       this.id = params.get('id')!;
       this.shipService.getDetail(this.id).subscribe(resp => {
+        console.log(resp.results);
         if(resp.results.length >0 ){
           this.starshipDetail = resp.results[0];
+          
         }
       });
     })
