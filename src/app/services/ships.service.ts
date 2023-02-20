@@ -26,7 +26,7 @@ export interface StarshipDetail {
   url: string;
 }
 
-export interface DetailsResponse {
+export interface ListResponse {
   count: number;
   next: string;
   previous?: any;
@@ -45,13 +45,13 @@ export class ShipsService {
 
   }
 
-  getShips(): Observable<Object>{
-    return this.http.get('https://starpi.herokuapp.com/starpi/starships/');
+  getShips(): Observable<ListResponse>{
+    return this.http.get<ListResponse>('https://starpi.herokuapp.com/starpi/starships/');
   }
 
-  getDetail(id:string):Observable<DetailsResponse>{
+  getDetail(id:string):Observable<StarshipDetail>{
 
-    return this.http.get<DetailsResponse>(`https://starpi.herokuapp.com/starpi/starships/${id}`);
+    return this.http.get<StarshipDetail>(`https://swapi.dev/api/starships/${id}`);
   }
 
 
