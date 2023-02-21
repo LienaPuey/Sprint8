@@ -45,8 +45,8 @@ export class ShipsService {
 
   }
 
-  getShips(): Observable<ListResponse>{
-    return this.http.get<ListResponse>('https://starpi.herokuapp.com/starpi/starships/');
+  getShips(url:string = "https://swapi.dev/api/starships/"): Observable<ListResponse>{
+    return this.http.get<ListResponse>(url);
   }
 
   getDetail(id:string):Observable<StarshipDetail>{
