@@ -11,6 +11,9 @@ import { ActivatedRoute } from '@angular/router';
 export class StarshipDetailComponent implements OnInit{
   starshipDetail: StarshipDetail | undefined;
   id:string='';
+  starshipImgs: any []=[];
+  img='';
+
   constructor(private shipService: ShipsService, private root: ActivatedRoute){}
 
   ngOnInit(): void {
@@ -22,6 +25,16 @@ export class StarshipDetailComponent implements OnInit{
       });
     })
     
+    this.shipService.getImg()
+    .subscribe((resp: any)=>{
+      this.starshipImgs = resp.naves.nave;
+      this.starshipImgs.forEach(nave =>{
+        if (nave.name === this.starshipDetail?.name) {
+          this.img = nave.img;
+        }
+      })
+
+    })
 
   }
 

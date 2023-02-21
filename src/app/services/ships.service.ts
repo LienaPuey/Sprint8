@@ -54,5 +54,7 @@ export class ShipsService {
     return this.http.get<StarshipDetail>(`https://swapi.dev/api/starships/${id}`);
   }
 
-
+  getImg():Observable<Object>{
+    return this.http.get('https://starpi.herokuapp.com/starpi');
+  }
 }

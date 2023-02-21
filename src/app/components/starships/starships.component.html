@@ -1,10 +1,12 @@
-<div class="container my-5">
+<div #scrollingArea class="container my-5">
     <div *ngFor="let item of starshipsList" class="card my-3 cardStarship bg-dark">
         <a [routerLink]="['/starshipsdetail', item.url.split('/')[5]]" routerLinkActive="active" class="text-decoration-none"><h5 class="card-header">{{item.name}}</h5></a>
         <div class="card-body">
           <h5 class="card-title ">{{item.model}}</h5>
         </div>
       </div>
-      <button (click)="getNextShips()">Next</button>
-      <button (click)="getPreviousShips()" >Previous</button>
+      <div class="text-center" *ngIf="nextPage === null">
+        <p class="pShipsLoaded">All ships loaded</p>
+      </div>
+      <button *ngIf="showGoToTopButton" class="btn btn-secondary" (click)="goToTop()">Go to top</button>
 </div>

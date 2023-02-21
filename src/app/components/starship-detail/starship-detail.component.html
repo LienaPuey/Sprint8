@@ -1,14 +1,28 @@
-<div class="container" >
-  <div *ngIf="starshipDetail" class="card" style="width: 18rem;">
-    <img [src]="starshipDetail.img" class="card-img-top" alt="...">
+<div class="container my-5 d-flex justify-content-center" >
+  <div *ngIf="starshipDetail" class="card bg-dark" style="width: 30rem;">
+    <img [src]="img" class="card-img-top" alt="{{starshipDetail.name}}">
     <div class="card-body">
-      <h5 class="card-title">{{ starshipDetail.name }}</h5>
-      <h6 class="card-subtitle mb-2">Model: {{ starshipDetail.model }}</h6>
-      <h6 class="card-subtitle mb-2">Starship Class: {{ starshipDetail.starship_class }}</h6>
-      <h6 class="card-subtitle mb-2">Manufacturer: {{ starshipDetail.manufacturer}}</h6>
-      <h6 class="card-subtitle mb-2">Cost: {{ starshipDetail.cost_in_credits }}</h6>
-
-
+    <div class="d-flex flex-column text-center my-2">
+      <h3 class="card-title">{{ starshipDetail.name }}</h3>
+      <h5 class="card-subtitle mb-2">Model: {{ starshipDetail.model }}</h5>
+      <h5 class="card-subtitle mb-2">Starship Class: {{ starshipDetail.starship_class }}</h5>
+      <h5 class="card-subtitle mb-2">Manufacturer: {{ starshipDetail.manufacturer}}</h5>
+      <h5 class="card-subtitle mb-2">Cost: {{ starshipDetail.cost_in_credits }} CREDITS</h5>
+    </div>
+      <div class="row">
+        <div class="col-6">
+          <h6 class="card-subtitle mb-2">Crew: {{starshipDetail.crew}} </h6>
+          <h6 class="card-subtitle mb-2">Passenger Capacity: {{starshipDetail.passengers}}</h6>
+          <h6 class="card-subtitle mb-2">Cargo Capacity:  {{starshipDetail.cargo_capacity}} TONS</h6>
+          <h6 class="card-subtitle mb-2">Consumables:  {{starshipDetail.consumables}}</h6>
+        </div>
+        <div class="col-6">
+          <h6 class="card-subtitle mb-2">Length: {{starshipDetail.length}} Meters</h6>
+          <h6 class="card-subtitle mb-2">Maximum atmosphering speed: {{starshipDetail.max_atmosphering_speed}} KM/H</h6>
+          <h6 class="card-subtitle mb-2">Hyperdrive rating:  {{starshipDetail.hyperdrive_rating}}</h6>
+          <h6 class="card-subtitle mb-2">Maximum speed in realspace:  {{starshipDetail.MGLT}} MGLT</h6>
+        </div>
+      </div>
     </div>
   </div>
 </div>
