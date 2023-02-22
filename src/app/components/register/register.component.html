@@ -1,0 +1,16 @@
+
+<div class="form-signin text-center container">
+    <form [formGroup]="registerForm">
+        <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
+    
+        <div class="form-floating">
+          <input [class.is-invalid]="registerForm.get('email')?.touched && registerForm.get('email')?.invalid " type="email" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="email">
+          <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating">
+          <input [class.is-invalid]="registerForm.get('password')?.touched && registerForm.get('password')?.invalid " type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="password">
+          <label for="floatingPassword">Password</label>
+        </div>
+        <button class="w-100 btn btn-lg btn-secondary" type="submit">Sign up</button>
+      </form>
+</div>

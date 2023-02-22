@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./starship-detail.component.scss']
 })
 export class StarshipDetailComponent implements OnInit{
-  starshipDetail: StarshipDetail | undefined;
+  starshipDetail!: StarshipDetail | undefined;
   id:string='';
   starshipImgs: any []=[];
   img='';
