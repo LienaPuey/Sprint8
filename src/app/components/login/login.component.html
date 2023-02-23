@@ -1,16 +1,17 @@
-
-    <div class="form-signin text-center container">
-        <form >
-            <h1 class="h3 mb-3 fw-normal">Please log in</h1>
-        
-            <div class="form-floating">
-              <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-              <label for="floatingInput">Email address</label>
-            </div>
-            <div class="form-floating">
-              <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-              <label for="floatingPassword">Password</label>
-            </div>
-            <button class="w-100 btn btn-lg btn-secondary" type="submit">Login</button>
-          </form>
-    </div>
+<div class="form-signin text-center container">
+  <form [formGroup]="loginForm">
+      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+  
+      <div class="form-floating my-3">
+        <input [class.is-invalid]="loginForm.get('email')?.touched && loginForm.get('email')?.invalid " type="email" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="email">
+        <label for="floatingInput">Email address</label>
+        <label class="my-3" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid" for="floatingInput">This field is required</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input [class.is-invalid]="loginForm.get('password')?.touched && loginForm.get('password')?.invalid " type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="password">
+        <label for="floatingPassword">Password</label>
+        <label class="my-3" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid" for="floatingInput">This field is required</label>
+      </div>
+      <button (click)="onLogin()" class="w-100 btn btn-lg btn-secondary" type="submit">Login</button>
+    </form>
+</div>

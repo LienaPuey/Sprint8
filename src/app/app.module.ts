@@ -13,11 +13,13 @@ import { RegisterComponent } from './components/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
+  {path:'',component:HomeComponent},
   {path: 'home', component:HomeComponent},
   {path: 'starships', component: StarshipsComponent},
   {path: 'starshipsdetail/:id', component: StarshipDetailComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'signup', component: RegisterComponent}
+  {path: 'signup', component: RegisterComponent},
+  {path: '**',redirectTo: ''}
 ]
 @NgModule({
   declarations: [
