@@ -11,12 +11,13 @@ import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
   {path: 'home', component:HomeComponent},
-  {path: 'starships', component: StarshipsComponent},
-  {path: 'starshipsdetail/:id', component: StarshipDetailComponent},
+  {path: 'starships', component: StarshipsComponent, canActivate: [AuthGuard]},
+  {path: 'starshipsdetail/:id', component: StarshipDetailComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: RegisterComponent},
   {path: '**',redirectTo: ''}

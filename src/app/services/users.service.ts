@@ -8,7 +8,7 @@ export class UsersService {
   public signUpUsersSubject = new BehaviorSubject<any[]>([]);
   public signUpUsers$ = this.signUpUsersSubject.asObservable();
   // signUpUsers:any[] = [];
-  isLoggedSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  isLogged: boolean =false;
   constructor() {
     const signUpUsers = JSON.parse(localStorage.getItem('signUpUsers') || '[]');
     this.signUpUsersSubject.next(signUpUsers);
@@ -25,7 +25,7 @@ export class UsersService {
     if (user) {
    
       // Si se encuentra un usuario con las credenciales proporcionadas, se establece la propiedad isLogged en true
-      this.isLoggedSubject.next(true);
+      this.isLogged = true;
       return true;
     } else {
       // Si no se encuentra un usuario con las credenciales proporcionadas, se devuelve false
