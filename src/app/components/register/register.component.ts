@@ -35,37 +35,49 @@ export class RegisterComponent {
   get passwordForm(){
     return this.registerForm.get('password')?.value;
   }
+
   onSignUp(){
     this.signUpObj = {
       email:  this.emailForm,
       password: this.passwordForm
     }
     if(this.registerForm.valid){
+      // Verificar si el correo electrónico ya está registrado
       this.userService.signUpUsers$.pipe(
         take(1),
-        map(signUpUsers => [...signUpUsers, this.signUpObj])
+        map(signUpUsers => {
+          const userExists = signUpUsers.some(user => user.email === this.emailForm);
+          if (userExists) {
+            throw new Error('Este correo electrónico ya está registrado');
+          }
+          return [...signUpUsers, this.signUpObj];
+        })
       ).subscribe(updatedSignUpUsers => {
         this.userService.signUpUsersSubject.next(updatedSignUpUsers);
         this.userService.saveUsers();
+      }, error => {
+        // Mostrar mensaje de error al usuario
+        alert(error.message);
       });
     }
   }
-
-
+  
   // onSignUp(){
   //   this.signUpObj = {
   //     email:  this.emailForm,
   //     password: this.passwordForm
   //   }
   //   if(this.registerForm.valid){
-  //     this.signUpUsers.push(this.signUpObj);
-  //     this.userService.saveUsers();
-  //     this.userService.isLoged();
+  //     this.userService.signUpUsers$.pipe(
+  //       take(1),
+  //       map(signUpUsers => [...signUpUsers, this.signUpObj])
+  //     ).subscribe(updatedSignUpUsers => {
+  //       this.userService.signUpUsersSubject.next(updatedSignUpUsers);
+  //       this.userService.saveUsers();
+  //     });
   //   }
+  // }
 
-    // console.log('usuario', this.signUpUsers);
-
-    // localStorage.setItem('signUpUsers', JSON.stringify(this.signUpUsers));
 
   }
 
