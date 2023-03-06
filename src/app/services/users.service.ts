@@ -7,8 +7,10 @@ import { BehaviorSubject } from 'rxjs';
 export class UsersService {
   public signUpUsersSubject = new BehaviorSubject<any[]>([]);
   public signUpUsers$ = this.signUpUsersSubject.asObservable();
-  // signUpUsers:any[] = [];
-  isLogged: boolean =false;
+  public isLoggedInSubject = new BehaviorSubject<boolean>(false);
+  public isLoggedIn$ = this.isLoggedInSubject.asObservable(); 
+
+
   constructor() {
     const signUpUsers = JSON.parse(localStorage.getItem('signUpUsers') || '[]');
     this.signUpUsersSubject.next(signUpUsers);
@@ -23,14 +25,14 @@ export class UsersService {
     const user = this.signUpUsersSubject.getValue().find(user => user.email === email && user.password === password);
   
     if (user) {
-   
       // Si se encuentra un usuario con las credenciales proporcionadas, se establece la propiedad isLogged en true
-      this.isLogged = true;
+      this.isLoggedInSubject.next(true);
       return true;
     } else {
       // Si no se encuentra un usuario con las credenciales proporcionadas, se devuelve false
       return false;
     }
   }
-  
+ 
+
 }
